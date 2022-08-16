@@ -1,0 +1,56 @@
+
+case 4: try{
+                BufferedReader reader =new BufferedReader(new FileReader("balance.txt"));
+                // FileReader file1=new FileReader("balance.txt");
+                String Int_line;
+                String B1="SBI",B2="HDFC",IFSC;
+                    String ACN1="1234567891012";
+                    String IFSC1="SBIN0005943";
+                    String ACN2="9876543210111";
+                    String IFSC2="HDFCN000594";
+                    String cust1=sc.nextLine();
+                    System.out.println("Enter Account Holder  Name\n");
+                    String cust=sc.nextLine();
+                    System.out.println("Enter Custommer account Number");
+                    String ACN=sc.nextLine();
+                    if(ACN.equals(ACN1) || ACN.equals(ACN2)){
+                        System.out.println("Enter amount to be Transfor");
+                        tran_amt= sc.nextInt();
+
+                    }
+                    else{
+                        System.out.println("Enter Custommer IFSC Code");
+                        IFSC=sc.nextLine();
+                        System.out.println("Enter amount to be Transfor");
+                        tran_amt= sc.nextInt();
+
+                    }
+                while ((Int_line = reader.readLine()) != null) {
+                    int In_Value = Integer.parseInt(Int_line);
+                    // Print the Integer
+                    
+                   i=Integer.parseInt(Int_line);  
+                    // System.out.println(i);
+                    
+                    int bal = In_Value-tran_amt;
+                    String f_bal=String.valueOf(bal);
+                    String trans=String.valueOf(tran_amt);
+                    int acn=Integer.parseInt(ACN);
+                    FileWriter file2= new FileWriter("balance.txt");
+                    file2.write(f_bal);
+                    FileWriter f=new FileWriter("transaction.txt");
+                    f.write(trans);
+                    FileWriter history= new FileWriter("history.txt");
+                    history.write(cust,acn,tran_amt);
+                    System.out.println("Transaction Successfull\n");
+                    file2.close();
+                }
+                
+                
+                
+
+            }
+            catch (Exception e){
+                e.getStackTrace();
+            }
+            break;
